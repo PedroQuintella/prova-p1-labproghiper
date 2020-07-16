@@ -1,0 +1,53 @@
+#homeButton {
+    color: white;
+}
+
+ul > li > h1 {
+    color: white;
+}
+
+ul > li > a {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+ul > li > a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+#searchButton {
+    color: white;
+    border-color: white;
+}
+
+#searchButton:hover {
+    color: #691717;
+    background-color: white;
+    border-color: white;
+}
+
+#searchButton:focus {
+    color: #691717;
+    background-color: white;
+    border-color: #691717;
+    box-shadow: 0 0 0 0.2rem white;
+}
+
+.footer {
+  text-align: center;
+  background: #404040;
+  padding: 0 0 30px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99999;
+  }

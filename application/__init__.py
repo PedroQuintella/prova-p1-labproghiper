@@ -6,4 +6,7 @@ app = Flask(__name__, static_folder=os.path.abspath("application/view/static"), 
 
 
 from application.controller import index_controller
+from application.controller import estado_controller
+from application.controller import noticia_controller
+
 
