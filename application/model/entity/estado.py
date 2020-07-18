@@ -1,11 +1,11 @@
 class Estado:
 
-    def __init__(self, id, nome, sigla, bandeira):
+    def __init__(self, id, nome, sigla, bandeira, listaNoticias):
         self._id = id
         self._nome = nome
         self._sigla = sigla
         self._bandeira = bandeira
-        self._listaNoticias = []
+        self._listaNoticias = listaNoticias
 
     def get_id(self):
         return self._id
@@ -18,9 +18,6 @@ class Estado:
     
     def get_bandeira(self):
         return self._bandeira
-    
-    def set_noticia(self, noticia):
-        self._listaNoticias.append(noticia)
 
     def get_listaNoticias(self):
         return self._listaNoticias

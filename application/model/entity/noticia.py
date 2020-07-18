@@ -1,13 +1,13 @@
 class Noticia:
 
-    def __init__(self, id, titulo, textoNoticia, thumbnail, video, dataPublicacao):
+    def __init__(self, id, titulo, textoNoticia, thumbnail, video, estado, dataPublicacao):
         self._id = id
         self._titulo = titulo
         self._textoNoticia = textoNoticia
         self._thumbnail = thumbnail
         self._video = video
         self._dataPublicacao = dataPublicacao
-        self._estado = None
+        self._estado = estado
         self._qtdVisualizacoes = 0
         self._qtdCurtidas = 0
         self._comentarios = []
@@ -29,15 +29,9 @@ class Noticia:
     
     def get_dataPublicacao(self):
         return self._dataPublicacao
-    
-    def set_estado(self, estado):
-        self._estado = estado
 
     def get_estado(self):
-        if self._estado == None:
-            return "Não informado"
-        else:
-            return self._estado
+        return self._estado
 
     def set_visualizacao(self):
         self._qtdVisualizacoes = self._qtdVisualizacoes + 1
