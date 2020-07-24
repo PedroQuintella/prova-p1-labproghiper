@@ -1,0 +1,13 @@
+<h5 class="card-title">Comentários recentes</h5>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    {% for comentario in noticia.get_comentarios() %}
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{comentario.get_autor()}}</h5>
+          <p class="card-text">{{comentario.get_texto()}}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </li>
+</ul>

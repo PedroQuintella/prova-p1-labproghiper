@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+
 #homeButton {
     color: white;
 }
@@ -51,3 +55,75 @@ ul > li > a:hover {
     bottom: 15px;
     z-index: 99999;
   }
+/*--------------------------------------------------------------
+# Notícia
+--------------------------------------------------------------*/
+
+.breadcrumb {
+    color: #404040;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #404040;
+}
+
+.breadcrumb-item.active {
+    color: #691717;
+}
+
+#newsTitle {
+    color: #691717;
+}
+
+video {
+    display: block;
+    margin: 0 auto; 
+}
+
+#likeButton {
+    color: white;
+    background-color: #691717;
+    border-color: #691717;
+    display: block;
+    margin: 0 auto; 
+}
+
+#likeButton:hover {
+    color: white;
+    background-color: #404040;
+    border-color: #404040;
+}
+
+#likeButton:focus {
+    color: white;
+    background-color: #404040;
+    border-color:  #404040;
+}
+
+.form-control {
+    border: 1px solid #404040;
+}
+
+.form-control:focus {
+    color: #404040;
+    background-color: #fff;
+    border-color: #691717;
+}
+
+#commentButton {
+    color: white;
+    background-color: #691717;
+    border-color: #691717;
+}
+
+#commentButton:hover {
+    color: white;
+    background-color: #404040;
+    border-color: #404040;
+}
+
+#commentButton:focus {
+    color: white;
+    background-color: #404040;
+    border-color:  #404040;
+}

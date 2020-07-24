@@ -2,7 +2,138 @@
 {% block body %}
 
 <br>
-<h1>Página da notícia</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><strong>Início</strong></li>
+    <li class="breadcrumb-item"><strong>{{noticia.get_estado()}}</strong></li>
+    <li class="breadcrumb-item active" aria-current="page"><strong>Notícia</strong></li>
+  </ol>
+</nav>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 id="newsTitle">{{noticia.get_titulo()}}</h4>
+    </div>
+  </div>
+</div>
 <br>
+<div class="container">
+  <div class="row">   
+    <video width="750" height="425" controls src="{{url_for('static', filename = noticia.get_video())}}" type="video/mp4"></video>
+  </div>
+</div>  
+<br><br>
+<div class="container">
+  <div id="campo-curtidas">
+    <h6 style="text-align: center;">{{noticia.get_dataPublicacao()}}</h6>
+    <h6 style="text-align: center;">{{noticia.get_qtdVisualizacoes()}} visualização(ões) | {{noticia.get_qtdCurtidas()}} curtida(s)</h6>
+  </div>
+</div>
+<br>
+<div class="container">
+  <button  class="btn btn-primary" id="likeButton" onclick="curtir()"><strong>Curtir</strong></button>
+</div>
+<br><br>
+<div class="container">
+    <p><h5>{{noticia.get_textoNoticia()}}</h5></p>
+    <p><h5>Confira a matéria completa no <a href="#newsTitle">vídeo acima</a>.</h5></p>
+</div>
+<br><br>
+<div class="container">
+  <h6>Faça um comentário</h6>
+  <br>
+    <form enctype="multipart/form-data" action="{{url_for('comentar', noticia_id = noticia.get_id())}}" method="POST" onsubmit="return submitForm(this);">
+      <div class="row">
+        <div class="col">
+          <label for="inputNome">Seu nome: </label>
+            <input type="text" class="form-control" id="inputNome" name="nome">
+        </div>
+        <div class="col">
+          <label for="inputComentario">Comentário:</label>
+            <input type="textarea" class="form-control" id="inputComentario" name="texto">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" id="commentButton"><strong>Enviar</strong></button>
+        </div>
+      </div>
+    </form>
+    <br>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" id="commentButton" onclick="apagar_comentario()"><strong>Apagar Comentário</strong></button>
+        </div>
+      </div>
+</div>
+<br><br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <div class="card-body" id="campo-comentarios">
+        <h5 class="card-title">Comentários recentes</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            {% for comentario in noticia.get_comentarios() %}
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{comentario.get_autor()}}</h5>
+                  <p class="card-text">{{comentario.get_texto()}}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script>
+  function submitForm(formElement){
+    var formData = new FormData(formElement);
+    var xhr = new XMLHttpRequest();
+    xhr.open(formElement.method, formElement.action);
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState == 4 && xhr.status == 201) {
+        document.getElementById('campo-comentarios').innerHTML = xhr.response;
+        };
+      };
+    xhr.send(formData);
+    return false;
+  }
+</script>
+
+<script>
+  function curtir(formElement){
+    var formData = new FormData(formElement);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', "{{url_for('curtir', noticia_id = noticia.get_id())}}");
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState == 4 && xhr.status == 200) {
+        document.getElementById('campo-curtidas').innerHTML = xhr.response;
+        };
+      };
+    xhr.send(formData);
+    return false;
+  }
+</script>
+
+<script>
+  function apagar_comentario(formElement){
+    var formData = new FormData(formElement);
+    var xhr = new XMLHttpRequest();
+    xhr.open('DELETE', "{{url_for('apagar', noticia_id = noticia.get_id())}}");
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState == 4 && xhr.status == 200) {
+        };
+      };
+    xhr.send(formData);
+    return false;
+  }
+</script>
+ 
 {% endblock %}
+
