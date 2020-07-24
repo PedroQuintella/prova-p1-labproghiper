@@ -70,13 +70,35 @@ ul > li > a:hover {
   font-size: 14px;
 }
 
-.back-to-top {
-    position: fixed;
-    display: none;
-    right: 15px;
-    bottom: 15px;
-    z-index: 99999;
-  }
+/*--------------------------------------------------------------
+# Index
+--------------------------------------------------------------*/
+
+.titulo {
+    color: #691717;
+    text-align: center;
+}
+
+#cardButton {
+    color: white;
+    background-color: #691717;
+    border-color: #691717;
+}
+
+#cardButton:hover {
+    color: white;
+    background-color: #404040;
+    border-color: #404040;
+}
+
+#cardButton:focus {
+    color: white;
+    background-color: #404040;
+    border-color: white;
+    box-shadow: 0 0 0 0.1rem #404040;
+
+}
+
 /*--------------------------------------------------------------
 # Estado
 --------------------------------------------------------------*/

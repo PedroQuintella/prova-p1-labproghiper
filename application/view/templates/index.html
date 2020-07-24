@@ -1,8 +1,74 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<br>
-<h1>Olá, mundo!</h1>
-<br>
+<br><br><br><br>
+<div class="container">
+  <h2 class="titulo">Mais Recentes</h2>
+</div>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="card-group">
+      {% for noticia in listaNoticiasRecentes %}
+      <div class="col">
+        <div class="card text-center" style="width: 15rem; height: 20rem;">
+          <img class="card-img-top" width="300" height="174" src="{{url_for('static', filename = noticia.get_thumbnail())}}" alt="Imagem ilustrativa">
+          <div class="card-body">
+            <p class="card-text">{{noticia.get_titulo()}}</p>
+            <p class="card-text">{{noticia.get_qtdVisualizacoes()}} visualização(ões) <br> {{noticia.get_qtdCurtidas()}} curtida(s)</p>
+            <a id="cardButton" href="{{url_for('noticia', noticia_id = noticia.get_id())}}" class="btn btn-primary"><strong>Saiba mais</strong></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br><br><br>
+<div class="container" id="listagemEstados">
+  <h2 class="titulo">Por Estado</h2>
+</div>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="card-group">
+      {% for estado in listaEstados %}
+      <div class="col">
+        <div class="card text-center" style="width: 16rem; height: 15rem; margin-left: 2.5rem; margin-right: 2.5rem;">
+          <img class="card-img-top" src="{{url_for('static', filename = estado.get_bandeira())}}" alt="Bandeira do Estado de {{estado.get_nome()}}">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{estado.get_nome()}}</h5>
+            <a id="cardButton" href="{{url_for('estado', estado_id = estado.get_id())}}" class="btn btn-primary"><strong> Ver Notícias </strong></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br><br>
+<div class="container">
+  <h2 class="titulo">Mais Curtidas</h2>
+</div>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="card-group" id="listagemMaisCurtidas">
+      {% for noticia in  listaNoticiasMaisCurtidas %}
+      <div class="col">
+        <div class="card text-center" style="width: 15rem; height: 20rem;">
+          <img class="card-img-top" width="300" height="174" src="{{url_for('static', filename = noticia.get_thumbnail())}}" alt="Imagem ilustrativa">
+          <div class="card-body">
+            <p class="card-text">{{noticia.get_titulo()}}</p>
+            <p class="card-text">{{noticia.get_qtdVisualizacoes()}} visualização(ões) <br> {{noticia.get_qtdCurtidas()}} curtida(s)</p>
+            <a id="cardButton" href="{{url_for('noticia', noticia_id = noticia.get_id())}}" class="btn btn-primary"><strong>Saiba mais</strong></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br><br><br>
 
 {% endblock %}
