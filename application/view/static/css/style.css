@@ -40,6 +40,28 @@ ul > li > a:hover {
     box-shadow: 0 0 0 0.2rem white;
 }
 
+#subirTopo {
+    text-decoration: none;
+    background: #691717;
+    bottom: 30px;
+    right: 30px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: fixed;
+    border: 0;
+    font-family: sans-serif;
+    opacity: .9;
+    }
+    
+#subirTopo:hover {
+    opacity:1;
+}
+
 .footer {
   text-align: center;
   background: #404040;
@@ -55,6 +77,24 @@ ul > li > a:hover {
     bottom: 15px;
     z-index: 99999;
   }
+/*--------------------------------------------------------------
+# Estado
+--------------------------------------------------------------*/
+
+#estadoCard {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    color: #691717;
+}
+
+a:hover {
+    color: #691717;
+}
+
 /*--------------------------------------------------------------
 # Notícia
 --------------------------------------------------------------*/

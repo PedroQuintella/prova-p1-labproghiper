@@ -1,8 +1,36 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<br>
-<h3>Página de Estados</h3>
-<br>
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="card text-center" id="estadoCard" style="width: 15rem; height: 16rem;">
+      <img class="card-img-top" src="{{url_for('static', filename = estado.get_bandeira())}}" alt="Bandeira do Estado de {{estado.get_nome()}}">
+      <div class="card-body">
+        <h5 class="card-title">{{estado.get_nome()}} ({{estado.get_sigla()}})</h5>
+      </div>
+    </div>
+  </div>
+</div>  
+<br><br><br><br><br>
+<div class="container">
+    <div class="row justify-content-around">
+      <div class="card-group">
+        {% for noticia in estado.get_listaNoticias() %}
+        <div class="col-5">
+          <div class="card text-center" style="width: 20rem; height: 20rem; margin-left: 2.5rem; margin-right: 2.5rem;">
+            <img class="card-img-top" width="300" height="174" src="{{url_for('static', filename = noticia.get_thumbnail())}}" alt="Imagem ilustrativa">
+            <div class="card-body">
+              <p class="card-text">{{noticia.get_titulo()}}</p>
+              <p class="card-text">{{noticia.get_qtdVisualizacoes()}} visualização(ões) <br> {{noticia.get_qtdCurtidas()}} curtida(s)</p>
+              <a id="cardButton" href="{{url_for('noticia', noticia_id = noticia.get_id())}}" class="btn btn-primary"><strong>Saiba mais</strong></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+<br><br><br><br><br><br><br>
 
 {% endblock %}
